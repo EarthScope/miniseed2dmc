@@ -1,5 +1,5 @@
 # <p >miniseed2dmc 
-###  Transfer Mini-SEED data to a DMC</p>
+###  Transfer miniSEED data to a DMC</p>
 
 1. [Name](#)
 1. [Synopsis](#synopsis)
@@ -18,9 +18,9 @@ miniseed2dmc [options] host:port files|directories ...
 
 ## <a id='description'>Description</a>
 
-<p ><b>miniseed2dmc</b> transfers selected Mini-SEED data records from the local computer to a remote Data Management Center.  Prior to using this program coordination with DMC is required and the user must have been assigned a host and port indicating where the data should be sent.</p>
+<p ><b>miniseed2dmc</b> transfers selected miniSEED data records from the local computer to a remote Data Management Center.  Prior to using this program coordination with DMC is required and the user must have been assigned a host and port indicating where the data should be sent.</p>
 
-<p >Mini-SEED to be transfered can be identified 3 different ways:</p>
+<p >miniSEED to be transferred can be identified 3 different ways:</p>
 <pre >
 1 - files on the command line
 2 - directories on the command line which will be searched
@@ -33,7 +33,7 @@ miniseed2dmc [options] host:port files|directories ...
 
 <p >A state file is maintained by <b>miniseed2dmc</b> to track the progress of data transfer.  This tracking means that the client can be shut down and then resume the transfer when the client is restarted.  More importantly it allows the client to determine when all records from a given data set have been transferred preventing them from being transferred again erroneously.  By default the state file is written to a file named, creatively, 'statefile' in the working directory (see the <b>-w</b> option).  The default state file location may be overridden using the <b>-S</b> option.</p>
 
-<p >To track the Mini-SEED data transferred <b>miniseed2dmc</b> writes SYNC files representing the data coverage.  The SYNC files are written to the working directory (see the <b>-w</b> option).  The SYNC file names contain the connection start and end times as a record of when the data was sent.  A separate SYNC file listing is written for each time the program is executed.</p>
+<p >To track the miniSEED data transferred <b>miniseed2dmc</b> writes SYNC files representing the data coverage.  The SYNC files are written to the working directory (see the <b>-w</b> option).  The SYNC file names contain the connection start and end times as a record of when the data was sent.  A separate SYNC file listing is written for each time the program is executed.</p>
 
 ## <a id='options'>Options</a>
 
@@ -75,7 +75,7 @@ miniseed2dmc [options] host:port files|directories ...
 
 <b>-ACK</b>
 
-<p style="padding-left: 30px;">Request and require acknowledgements from the server for each Mini-SEED record sent, this guarantees that each record sent was written to the filesystem by the remote server.  This should not be necessary since TCP performs this function for the network layer, leaving only a very small potential that a server crash will lose data sent by the client.  It will also significantly slow down the transfer rate.</p>
+<p style="padding-left: 30px;">Request and require acknowledgements from the server for each miniSEED record sent, this guarantees that each record sent was written to the filesystem by the remote server.  This should not be necessary since TCP performs this function for the network layer, leaving only a very small potential that a server crash will lose data sent by the client.  It will also significantly slow down the transfer rate.</p>
 
 <b>-mr </b><i>maxrate</i>
 
@@ -99,15 +99,15 @@ miniseed2dmc [options] host:port files|directories ...
 
 <b>-l </b><i>listfile</i>
 
-<p style="padding-left: 30px;">The <i>listfile</i> is a file containing a list of files and/or directories containing Mini-SEED to be sent.  This is an alternative to prefixing an input file with the '@' which identifies it as a list file.</p>
+<p style="padding-left: 30px;">The <i>listfile</i> is a file containing a list of files and/or directories containing miniSEED to be sent.  This is an alternative to prefixing an input file with the '@' which identifies it as a list file.</p>
 
 <b>-s </b><i>selectfile</i>
 
-<p style="padding-left: 30px;">Limit processing to Mini-SEED records that match a selection in the specified file.  The selection file contains parameters to match the network, station, location, channel, quality and time range for input records.  As a special case, specifying "-" will result in selection lines being read from stdin.  For more details see the <b>SELECTION FILE</b> section below.</p>
+<p style="padding-left: 30px;">Limit processing to miniSEED records that match a selection in the specified file.  The selection file contains parameters to match the network, station, location, channel, quality and time range for input records.  As a special case, specifying "-" will result in selection lines being read from stdin.  For more details see the <b>SELECTION FILE</b> section below.</p>
 
 <b></b><i>host:port</i>
 
-<p style="padding-left: 30px;">The required host and port arguments specify the server where the Mini-SEED records should be sent.</p>
+<p style="padding-left: 30px;">The required host and port arguments specify the server where the miniSEED records should be sent.</p>
 
 ## <a id='selection-file'>Selection File</a>
 
@@ -128,7 +128,7 @@ IU   COLA 00   LHZ   *     2008,100,10,00,00 2008,100,10,30,00
 
 <b>Example 1</b>
 
-<p style="padding-left: 30px;">The most simple example is sending a couple of files containing Mini-SEED:</p>
+<p style="padding-left: 30px;">The most simple example is sending a couple of files containing miniSEED:</p>
 
 <pre style="padding-left: 30px;">
 > miniseed2dmc host:port 080101.mseed 080102.mseed
@@ -138,7 +138,7 @@ IU   COLA 00   LHZ   *     2008,100,10,00,00 2008,100,10,30,00
 
 <b>Example 2</b>
 
-<p style="padding-left: 30px;">If there is a directory called 'data' that contains only files of Mini-SEED they can all be sent using:</p>
+<p style="padding-left: 30px;">If there is a directory called 'data' that contains only files of miniSEED they can all be sent using:</p>
 
 <pre style="padding-left: 30px;">
 > miniseed2dmc host:port data
@@ -165,13 +165,13 @@ IU   COLA 00   LHZ   *     2008,100,10,00,00 2008,100,10,30,00
 
 <b>Example 4</b>
 
-<p style="padding-left: 30px;">A recommended organization of data is to have a directory for each data set and keep all the Mini-SEED files in a sub-directory.  For example, a monthly data set can be kept in /archive/Jan2008/ with all the January 2008 Mini-SEED files kept in /archive/Jan2008/data/. <b>miniseed2dmc</b> could then we executed in the following manner:</p>
+<p style="padding-left: 30px;">A recommended organization of data is to have a directory for each data set and keep all the miniSEED files in a sub-directory.  For example, a monthly data set can be kept in /archive/Jan2008/ with all the January 2008 miniSEED files kept in /archive/Jan2008/data/. <b>miniseed2dmc</b> could then we executed in the following manner:</p>
 
 <pre style="padding-left: 30px;">
 > miniseed2dmc host:port -w /archive/Jan2008/ /archive/Jan2008/data/
 </pre>
 
-<p >This will result in all the Mini-SEED data in /archive/Jan2008/data/ being transferred and the related state and SYNC file(s) being written to /archive/Jan2008/.</p>
+<p >This will result in all the miniSEED data in /archive/Jan2008/data/ being transferred and the related state and SYNC file(s) being written to /archive/Jan2008/.</p>
 
 ## <a id='notes'>Notes</a>
 
@@ -181,7 +181,7 @@ IU   COLA 00   LHZ   *     2008,100,10,00,00 2008,100,10,30,00
 
 <pre >
 Chad Trabant
-IRIS Data Management Center
+EarthScope Data Services
 </pre>
 
 
